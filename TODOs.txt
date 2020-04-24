@@ -1,0 +1,20 @@
+HIGH PRIORITY:
+[] Figure out SOMETHING to make it easier to tell when to switch notes.
+[] Make it MORE OBVIOUS which note type you're in.
+[] Have 5 complete charts.
+[x] Update HOTN and PARADOXX to include new notes!!!!
+[x] Fix hit detection to only detect the right notes.
+[x] Pause notes upon pulling up the dialog to quit the game.
+[x] Have game go back to title screen or something like that upon exiting results screen.
+[x] Add results screen.
+[x] Finish PARADOXX stepchart.
+
+Low Priority:
+[] Implement PIU-style chart selection screen instead of a file dialog??
+[] See if audio syncing is useful(in Documentation).
+[] Add holds.
+[x] Make the Hit Notes more sexier.
+[x] Figure out the best object to encapsulate a Note (create your own?)
+[x] Design a custom, sexy theme for the popup dialogs and buttons.
+[x] Convert .gifs back to .pngs, or find a way for Godot to handle .gifs.
+[x] Set up Scene switching from title screen to main screen.

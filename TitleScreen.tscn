@@ -1,0 +1,250 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/img/TitleScreen.png" type="Texture" id=1]
+[ext_resource path="res://TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://Assets/music/Church_of_8_Wheels.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/fonts/DAGGERSQUARE.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/img/TitleScreenColorBorderMain.png" type="Texture" id=5]
+[ext_resource path="res://Assets/img/TitleScreenColorBorderWide.png" type="Texture" id=6]
+[ext_resource path="res://Assets/img/TitleScreenColorBorder2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/img/TitleScreenColorBorder.png" type="Texture" id=8]
+[ext_resource path="res://Assets/fonts/daggersquareData.tres" type="DynamicFontData" id=9]
+[ext_resource path="res://Global.gd" type="Script" id=10]
+[ext_resource path="res://Assets/sfx/hitSound.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/sfx/ErrorSound.wav" type="AudioStream" id=12]
+[ext_resource path="res://Themes/NoteSpeedButtonTheme1.tres" type="Theme" id=13]
+[ext_resource path="res://Assets/sfx/Impact.wav" type="AudioStream" id=14]
+[ext_resource path="res://Themes/PopupDialogTheme.tres" type="Theme" id=15]
+[ext_resource path="res://Themes/NoteSpeedButtonTheme10.tres" type="Theme" id=16]
+[ext_resource path="res://Assets/img/TitleScreenBackground.png" type="Texture" id=17]
+[ext_resource path="res://Assets/img/RainbowBackgroundBar.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 44
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="TitleScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+autoplay = true
+
+[node name="TitleScreenBackground" type="Sprite" parent="."]
+position = Vector2( 768, 432 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 17 )
+
+[node name="TitleScreenPanel" type="Panel" parent="."]
+anchor_right = 1.875
+anchor_bottom = 1.8
+margin_right = -0.00012207
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameDialog" type="ConfirmationDialog" parent="TitleScreenPanel"]
+margin_left = 632.0
+margin_top = 400.0
+margin_right = 928.0
+margin_bottom = 472.0
+theme = ExtResource( 15 )
+window_title = "Quit Game"
+dialog_text = "Are you sure you want to quit GDstep?"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SelectChartDialog" type="FileDialog" parent="TitleScreenPanel"]
+margin_left = 360.0
+margin_top = 232.0
+margin_right = 832.0
+margin_bottom = 528.0
+theme = ExtResource( 15 )
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "C:/Users/Tian/Documents/Personal Projects/Godot Builds/Charts"
+current_path = "C:/Users/Tian/Documents/Personal Projects/Godot Builds/Charts/"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HitSound" type="AudioStreamPlayer" parent="TitleScreenPanel"]
+stream = ExtResource( 11 )
+volume_db = 2.0
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="TitleScreenPanel"]
+stream = ExtResource( 12 )
+volume_db = -3.0
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="TitleScreenPanel"]
+stream = ExtResource( 14 )
+volume_db = -5.0
+
+[node name="RainbowColorBar" type="Sprite" parent="TitleScreenPanel"]
+position = Vector2( 272, 688 )
+rotation = 1.5708
+scale = Vector2( 0.5, 1.35 )
+texture = ExtResource( 18 )
+
+[node name="TitleScreen" type="Sprite" parent="TitleScreenPanel"]
+position = Vector2( 768, 432 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectChartButton" type="Button" parent="TitleScreenPanel"]
+margin_left = 1032.0
+margin_top = 192.0
+margin_right = 1280.0
+margin_bottom = 232.0
+theme = ExtResource( 16 )
+custom_fonts/font = SubResource( 1 )
+text = "Open File"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ChosenFile" type="Label" parent="TitleScreenPanel"]
+margin_left = 1008.0
+margin_top = 248.0
+margin_right = 1312.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NoteVelocityDown1" type="Button" parent="TitleScreenPanel"]
+margin_left = 1072.0
+margin_top = 480.0
+margin_right = 1115.0
+margin_bottom = 568.0
+rect_pivot_offset = Vector2( 243, -44 )
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 4 )
+text = "<"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NoteVelocityDown10" type="Button" parent="TitleScreenPanel"]
+margin_left = 1000.0
+margin_top = 456.0
+margin_right = 1068.0
+margin_bottom = 592.0
+rect_pivot_offset = Vector2( 315, -44 )
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 4 )
+text = "<<"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NoteVelocityUp1" type="Button" parent="TitleScreenPanel"]
+margin_left = 1200.0
+margin_top = 480.0
+margin_right = 1243.0
+margin_bottom = 568.0
+rect_pivot_offset = Vector2( 115, -44 )
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NoteVelocityUp10" type="Button" parent="TitleScreenPanel"]
+margin_left = 1248.0
+margin_top = 456.0
+margin_right = 1316.0
+margin_bottom = 592.0
+rect_pivot_offset = Vector2( 67, -44 )
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 4 )
+text = ">>"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NoteVelocity" type="Label" parent="TitleScreenPanel"]
+margin_left = 1117.0
+margin_top = 480.0
+margin_right = 1197.0
+margin_bottom = 568.0
+rect_pivot_offset = Vector2( 195, -44 )
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+text = "100"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MainLogo" type="Sprite" parent="TitleScreenPanel"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 768, 432 )
+scale = Vector2( 0.8, 0.8 )
+z_as_relative = false
+texture = ExtResource( 5 )
+
+[node name="LogoCollision" type="Area2D" parent="TitleScreenPanel/MainLogo"]
+position = Vector2( -340, -40 )
+z_as_relative = false
+gravity = 0.0
+
+[node name="LogoCollisionShape" type="CollisionPolygon2D" parent="TitleScreenPanel/MainLogo/LogoCollision"]
+polygon = PoolVector2Array( -0.914734, 14.7311, -7.42755, 250.123, 65.1437, 247.331, 147.019, 229.654, 219.59, 198.951, 232.616, 187.786, 438.235, 188.716, 440.095, 216.628, 476.381, 216.628, 476.381, 188.716, 518.249, 189.646, 534.996, 179.412, 543.37, 166.386, 540.579, 101.258, 529.414, 80.7896, 468.938, 77.0679, 440.095, 79.8591, 438.235, 97.5367, 418.696, 78.9288, 351.707, 79.8591, 342.403, 90.0936, 338.682, 79.8591, 311.7, 77.0679, 308.909, 60.3207, 290.301, 56.5991, 276.345, 46.3647, 266.11, 49.1559, 267.041, -77.3786, 297.744, -121.107, 299.605, -136.924, 254.015, -203.913, 228.894, -213.217, 186.096, -190.888, 147.019, -217.869, 149.334, -279.591, 101.345, -302.116, 50.4179, -311.91, 39.6448, -297.22, 22.9956, -260.004, -15.1999, -262.942, -37.7253, -306.034, -64.1683, -313.869, -141.539, -285.467, -145.456, -266.859, -142.518, -216.911, -181.693, -188.51, -214.991, -209.076, -234.579, -212.014, -252.207, -201.241, -292.361, -147.376, -296.279, -133.665, -292.361, -117.995, -261.022, -76.8614, -262.98, 47.5186, -280.609, 43.6011, -289.423, 55.3535, -292.361, 77.879, -287.465, 109.219, -268.857, 147.414, -234.579, 185.61, -180.713, 214.011, -119.992, 237.516, -76.9001, 248.289, -7.36493, 250.248 )
+
+[node name="ColorBorderRight1" type="Sprite" parent="TitleScreenPanel"]
+visible = false
+position = Vector2( 768, 655 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+
+[node name="ColorBorderRight2" type="Sprite" parent="TitleScreenPanel"]
+visible = false
+position = Vector2( 728.958, 612.731 )
+scale = Vector2( 0.8, 0.799154 )
+texture = ExtResource( 7 )
+offset = Vector2( 48.8029, -589.608 )
+
+[node name="ColorBorderWide" type="Sprite" parent="TitleScreenPanel"]
+visible = false
+position = Vector2( 768, 432 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )

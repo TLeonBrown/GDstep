@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/img/ResultsScreen.png" type="Texture" id=1]
+[ext_resource path="res://Assets/img/RainbowBackgroundBar.png" type="Texture" id=2]
+[ext_resource path="res://ResultsScreen.gd" type="Script" id=3]
+[ext_resource path="res://Themes/PopupDialogTheme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/sfx/hitSound.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/fonts/daggersquareData.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/sfx/Impact.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/sfx/tickSound.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/img/TitleScreenBackground.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 88
+outline_size = 4
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -5
+extra_spacing_bottom = -2
+font_data = ExtResource( 6 )
+
+[node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 264.17, 367.659, 470.94, 580.297 ],
+"_edit_vertical_guides_": [ 619.515 ]
+}
+
+[node name="ResultsScreenBackground" type="Sprite" parent="."]
+position = Vector2( 838.597, 568.989 )
+rotation = 1.5708
+scale = Vector2( 0.635736, 1.8832 )
+texture = ExtResource( 9 )
+
+[node name="ResultsScreenPanel" type="Panel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameDialog" type="ConfirmationDialog" parent="ResultsScreenPanel"]
+visible = true
+margin_left = 632.0
+margin_top = 400.0
+margin_right = 928.0
+margin_bottom = 470.0
+theme = ExtResource( 4 )
+window_title = "Quit Game"
+dialog_text = "Are you sure you want to quit GDstep?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HitSound" type="AudioStreamPlayer" parent="ResultsScreenPanel"]
+stream = ExtResource( 5 )
+volume_db = 3.0
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="ResultsScreenPanel"]
+stream = ExtResource( 7 )
+volume_db = -5.0
+
+[node name="ScoreTickSound" type="AudioStreamPlayer" parent="ResultsScreenPanel"]
+stream = ExtResource( 8 )
+volume_db = -8.0
+
+[node name="RainbowColorBar" type="Sprite" parent="ResultsScreenPanel"]
+position = Vector2( 290, 702 )
+rotation = 1.5708
+scale = Vector2( 0.55, 1.275 )
+texture = ExtResource( 2 )
+
+[node name="ResultsScreen" type="Sprite" parent="ResultsScreenPanel"]
+position = Vector2( 800, 536 )
+texture = ExtResource( 1 )
+
+[node name="TotalScoreAndPercentage" type="Label" parent="ResultsScreenPanel"]
+margin_left = 218.341
+margin_top = 108.493
+margin_right = 948.341
+margin_bottom = 210.493
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PerfectCount" type="Label" parent="ResultsScreenPanel"]
+margin_left = 597.038
+margin_top = 214.837
+margin_right = 1327.04
+margin_bottom = 316.837
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.654902, 0.654902, 0.654902, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoodCount" type="Label" parent="ResultsScreenPanel"]
+margin_left = 597.038
+margin_top = 320.13
+margin_right = 1327.04
+margin_bottom = 422.13
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OkayCount" type="Label" parent="ResultsScreenPanel"]
+margin_left = 597.038
+margin_top = 423.399
+margin_right = 1327.04
+margin_bottom = 525.399
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissCount" type="Label" parent="ResultsScreenPanel"]
+margin_left = 597.038
+margin_top = 531.743
+margin_right = 1327.04
+margin_bottom = 633.743
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,376 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/img/GameScreen.png" type="Texture" id=1]
+[ext_resource path="res://MainGame.gd" type="Script" id=2]
+[ext_resource path="res://Themes/PopupDialogTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/fonts/daggersquareData.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/sfx/hitSound.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/img/PauseOverlay.png" type="Texture" id=6]
+[ext_resource path="res://Assets/img/SquareNoteHit.png" type="Texture" id=7]
+[ext_resource path="res://Assets/img/BigNoteHit.png" type="Texture" id=8]
+[ext_resource path="res://Assets/video/neon-light-background-animation.ogv" type="VideoStream" id=9]
+[ext_resource path="res://Assets/sfx/ShiftSound.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/img/NoteGridCold.png" type="Texture" id=11]
+[ext_resource path="res://Assets/sfx/ShiftSoundReverse.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/img/Particle.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -5
+extra_spacing_bottom = -2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 88
+outline_size = 4
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.32
+emission_shape = 1
+emission_sphere_radius = 60.86
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 146.8
+flatness = 0.31
+gravity = Vector3( 0, 400, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 27.87
+scale = 10.0
+scale_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.32
+emission_shape = 1
+emission_sphere_radius = 60.86
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 146.8
+flatness = 0.31
+gravity = Vector3( 0, 400, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 27.87
+scale = 3.0
+scale_random = 1.0
+
+[sub_resource type="DynamicFont" id=5]
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 1751.0, 789.0, 220.066 ]
+}
+
+[node name="ShiftForwards" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="ShiftBackwards" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="MainGamePanel" type="Panel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameDialog" type="ConfirmationDialog" parent="MainGamePanel"]
+visible = true
+margin_left = 590.0
+margin_top = 525.0
+margin_right = 886.0
+margin_bottom = 595.0
+theme = ExtResource( 3 )
+window_title = "Quit Game"
+dialog_text = "Are you sure you want to quit GDstep?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HitSound" type="AudioStreamPlayer" parent="MainGamePanel"]
+stream = ExtResource( 5 )
+volume_db = 3.0
+
+[node name="BGA" type="VideoPlayer" parent="MainGamePanel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_scale = Vector2( 0.8, 0.8 )
+stream = ExtResource( 9 )
+autoplay = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameScreen" type="Sprite" parent="MainGamePanel"]
+position = Vector2( 800, 536 )
+texture = ExtResource( 1 )
+
+[node name="NoteGridCold" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 800, 536 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ChartInfoLabel" type="Label" parent="MainGamePanel"]
+margin_left = 72.0
+margin_top = 35.0
+margin_right = 1466.0
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PerfectCountLabel" type="Label" parent="MainGamePanel"]
+margin_left = 1279.0
+margin_top = 177.0
+margin_right = 1478.0
+margin_bottom = 283.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.819608, 0.819608, 0.819608, 1 )
+text = "0"
+
+[node name="GoodCountLabel" type="Label" parent="MainGamePanel"]
+margin_left = 1279.0
+margin_top = 319.0
+margin_right = 1478.0
+margin_bottom = 425.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+text = "0"
+
+[node name="OkayCountLabel" type="Label" parent="MainGamePanel"]
+margin_left = 1279.0
+margin_top = 457.0
+margin_right = 1478.0
+margin_bottom = 563.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+text = "0"
+
+[node name="MissCountLabel" type="Label" parent="MainGamePanel"]
+margin_left = 1279.0
+margin_top = 597.0
+margin_right = 1478.0
+margin_bottom = 703.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+
+[node name="TotalScoreLabel" type="Label" parent="MainGamePanel"]
+margin_left = 1165.72
+margin_top = 736.0
+margin_right = 1364.72
+margin_bottom = 842.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hit1b" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 0.945313, 0, 1, 1 )
+position = Vector2( 101.464, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+
+[node name="Hit1c" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 0.0941176, 0.74902, 0, 1 )
+position = Vector2( 101.464, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+
+[node name="Hit1" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 102, 220 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+
+[node name="Hit2b" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 215.212, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit2c" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 0, 1, 0.788235, 1 )
+position = Vector2( 215.212, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit2" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 216.551, 220 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+
+[node name="Hit5b" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 1, 0.937255, 0, 1 )
+position = Vector2( 750.121, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit5c" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 0.407843, 0, 1, 1 )
+position = Vector2( 750.121, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit5" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 749.831, 220 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+
+[node name="Hit4b" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 1, 0.513726, 0, 1 )
+position = Vector2( 635.915, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit4c" type="Sprite" parent="MainGamePanel"]
+visible = false
+modulate = Color( 0, 0.133333, 1, 1 )
+position = Vector2( 635.915, 360 )
+scale = Vector2( 1.33826, 1.33826 )
+texture = ExtResource( 7 )
+offset = Vector2( 0.914108, -104.224 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hit4" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 637.28, 220 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+
+[node name="Hit3b" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 428.349, 220.504 )
+scale = Vector2( 1.06139, 1.19747 )
+texture = ExtResource( 8 )
+
+[node name="Hit3" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 427.269, 220.216 )
+scale = Vector2( 0.975, 1.1 )
+texture = ExtResource( 8 )
+
+[node name="Particles1" type="Particles2D" parent="MainGamePanel"]
+position = Vector2( 101.836, 219.284 )
+scale = Vector2( 0.9, 0.9 )
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 3 )
+
+[node name="Particles2" type="Particles2D" parent="MainGamePanel"]
+position = Vector2( 215.443, 219.284 )
+scale = Vector2( 0.9, 0.9 )
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 3 )
+
+[node name="Particles3" type="Particles2D" parent="MainGamePanel"]
+position = Vector2( 426.988, 219.284 )
+scale = Vector2( 2.15, 0.5 )
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 4 )
+texture = ExtResource( 13 )
+
+[node name="Particles4" type="Particles2D" parent="MainGamePanel"]
+position = Vector2( 636.966, 219.284 )
+scale = Vector2( 0.9, 0.9 )
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 3 )
+
+[node name="Particles5" type="Particles2D" parent="MainGamePanel"]
+position = Vector2( 749.79, 219.284 )
+scale = Vector2( 0.9, 0.9 )
+emitting = false
+amount = 200
+lifetime = 0.1
+one_shot = true
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 3 )
+
+[node name="PauseOverlay" type="Sprite" parent="MainGamePanel"]
+visible = false
+position = Vector2( 829, 534 )
+scale = Vector2( 1.07292, 1.07593 )
+texture = ExtResource( 6 )
+
+[node name="PauseLabel" type="Label" parent="MainGamePanel"]
+visible = false
+margin_left = 556.0
+margin_top = 385.0
+margin_right = 925.0
+margin_bottom = 505.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 5 )
+text = "PAUSED"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

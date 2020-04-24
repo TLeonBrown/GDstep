@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ShiftSoundReverse.wav-2f0354a17e826206ea19c034dcbd7677.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/ShiftSoundReverse.wav"
+dest_files=[ "res://.import/ShiftSoundReverse.wav-2f0354a17e826206ea19c034dcbd7677.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

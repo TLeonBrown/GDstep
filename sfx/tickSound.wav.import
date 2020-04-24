@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tickSound.wav-3394db0fdf1f68649b9c16c4aca46fd6.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/tickSound.wav"
+dest_files=[ "res://.import/tickSound.wav-3394db0fdf1f68649b9c16c4aca46fd6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
